@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Certificate Maker!</title>
+	<style>
+		body {
+			font-family: arial;
+			background-color: #EEE;
+			padding-top: 20px;
+		}
+		#vm {
+			padding: 30px;
+			background-color: white;
+			border: 1px dashed black;
+			width: 950px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="vm">
+		<table><tr>
+						<td>
+				<img v-bind:src="[[ img_url ]]">
+			</td>
+			<td>
+			<table>
+				<tr><td><h1>Certificate Maker!</h1></td></tr>
+				<tr>
+					<td>Name: </td>
+					<td><input v-model="name_val" type="text" @change="get_message"></td>
+				</tr>
+				<tr>
+					<td>Achievement description: </td>
+					<td><input type="text" v-model="achievement_val"  @change="get_message"></td>
+				</tr>
+				<tr>
+					<td>Signature: </td>
+					<td><input type="text" v-model="sig_val"  @change="get_message"></td>
+				</tr>
+				<tr>
+					<td>Template name:</td>
+					<td>
+						<select v-model="template_val"  @change="get_message">
+							<option value="Basic Template" selected="selected">Basic Template</option>
+							<option value="Red Template">Red Template</option>
+						</select>
+					</td>
+				</tr>
+				<tr><td><input type="button" value="Click me!" @click="get_message"></td></tr>
+			</table>
+			</td>
+
+
+	</tr></table>
+
+	<button @click="onPickFile">Upload Logo</button>
+	<input type="file" style="display:none" ref="fileInput" accept="image/*" @change="onFilePicked"/>
+	
+</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+</html>
